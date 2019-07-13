@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Manager</title>
+    <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.5/vue.min.js"></script>
+    <script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+    <script src="webjars/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        
+</head>
+<body>
+
+	<!-- Header -->    
+	<nav class="navbar navbar-inverse">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>                        
+	      </button>
+	      <a class="navbar-brand" href="#">Book Manager</a>
+	    </div>
+	    <div class="collapse navbar-collapse" id="myNavbar">
+	      <ul class="nav navbar-nav">
+	        <li class="active"><a href="#">Home</a></li>
+	      </ul>
+	      <ul class="nav navbar-nav navbar-right">
+	        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+	      </ul>
+	    </div>
+	  </div>
+	</nav>
+
+	<!-- Content: Main area -->    
+    <div class="container">
+    	<div class="row">
+
+			<!-- Content: Top area -->    
+    		<div class="col-sm-12" style="border:0px solid black;">
+				<div class="panel panel-primary">
+					<section id="booksSection" class="section container">
+					</section>
+										
+					<script>
+						const booksSectionApp = new Vue({
+							el: '#booksSection',
+							data: {
+								books: [],
+							},
+							methods: {
+							},
+							mounted() {
+									fetch("http://localhost:9090/bookmanager/bookAll")
+									.then(response => response.json())
+									.then((data) => {
+										console.log("Books: " + data);
+										this.books = data;
+									})
+							},
+							template: `
+							<div>
+							  <div class="panel-heading">
+							    <h3 class="panel-title">Available Books:</h3>
+							  </div>
+							  <div class="panel-body">
+							  </div>
+							  
+							  <!-- List group -->
+							  <ul class="list-group">
+							    <li class="list-group-item  d-flex justify-content-between align-items-center" v-for="book, i in books"> 
+							    	<strong>{{i+1}}. {{book.title}} : </strong>
+							    	{{book.isbn}}, {{book.author}}
+							    	<span class="badge badge-primary badge-pill">14</span>	
+							    </li>
+							  </ul>	
+					        </div>
+							`,
+						});	
+						
+					</script>
+				</div>
+			</div>	
+
+			<div class="col-sm-12" style="border:0px solid black;">
+				<section id="membersSection" class="section container">
+				</section>
+				
+					<script>
+						const membersSectionApp = new Vue({
+							el: '#membersSection',
+							data: {
+								people: [],
+								personbooks: [],
+								member: null,
+								displaypbooks: false,
+							},
+							methods: {
+								deletePerson(id, i) {
+									fetch("http://localhost:9090/bookmanager/person/" + id, {
+										method: "DELETE"
+									})
+									.then(() => {
+										console.log("DELETED!!!");
+										this.people.splice(i, 1);
+									})
+								},
+								fetchBooksByPersonId(person, i) {
+									fetch("http://localhost:9090/bookmanager/bookAll/" + person.id)
+									.then(response => response.json())
+									.then((data) => {
+										this.member = person.name;
+										this.personbooks = data;
+										this.displaypbooks = true;
+										
+									})
+								}
+							},
+							mounted() {
+								fetch("http://localhost:9090/bookmanager/personAll")
+									.then(response => response.json())
+									.then((data) => {
+										this.people = data;
+									})
+							},
+							template: `
+							
+							<div>
+								<!-- Content: Left area: Members list -->    
+					    		<div class="col-sm-8" style="border:0px solid black;">
+									<div class="panel panel-default">
+									  	<!-- Table -->
+							        	<table class="table table-striped">
+								            <caption><h2>Members list</h2></caption>
+								            <thead>
+								                <tr>
+								                    <th>Name</th>
+								                    <th>Phone number</th>
+								                    <th>EMail</th>
+								                    <th>Books</th>
+								                </tr>
+								            </thead>
+								            <tbody>
+								                    <tr v-for="person, i in people">
+								                        <td>{{person.name}}</td>
+								                        <td>{{person.phoneNumber}}</td>
+								                        <td>{{person.emailAddress}}</td>
+								                        <td><button class="btn btn-warning" v-on:click="fetchBooksByPersonId(person, i)">View Books <span class="badge badge-light">{{person.booksBorrowed}}</span></button></td>
+								                    </tr>
+								            </tbody>
+								        </table>
+									</div>
+								</div>
+								
+								<!-- Content: Right area: Borrowed books -->    
+					    		<div class="col-sm-4" style="border:0px solid black;" v-if="displaypbooks">
+									<div class="panel panel-default" >
+										<div class="panel-heading">
+									    	<h3 class="panel-title">Books lent by {{member}}:</h3>
+									  	</div>
+										<!-- List group -->							
+										<ul class="list-group">
+										  <li class="list-group-item" v-for="pbook, i in personbooks">
+										    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+											  <div class="d-flex w-100 justify-content-between">
+											    <h5 class="mb-1"><strong>{{pbook.title}}</strong></h5>
+											  </div>
+											  <p class="mb-1">
+											  	<p>Description: {{pbook.title}} </br>
+											  	ISBN: {{pbook.isbn}} </br>
+											  	Author: {{pbook.author}}</p>
+											  </p>
+											  <small>
+												  <span class="glyphicon glyphicon-star checked"></span>
+												  <span class="glyphicon glyphicon-star checked"></span>
+												  <span class="glyphicon glyphicon-star checked"></span>
+												  <span class="glyphicon glyphicon-star"></span>
+												  <span class="glyphicon glyphicon-star"></span>
+											  </small>
+											</a>
+										  
+										  </li>
+										</ul>  
+									</div>
+					    		</div>
+					        </div>
+					        
+							`,
+						});	
+						
+					</script>
+			</div>
+    	</div>
+    	
+        <!-- Script import here: -->
+
+    </div>
+	
+	<!-- Footer -->    
+	<!-- 
+	<footer class="container-fluid text-center">
+	  <p>Book Manager Footer</p>
+	</footer>
+	 -->
+    
+</body>
+</html>
