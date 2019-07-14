@@ -19,7 +19,7 @@ and a generated stand-alone application .jar are the Prerequisites to run this a
 
 ### Project structure
 
-Project structure on Eclipse:
+Project structure on Eclipse:</br>
 ![Book Manager Project structure](BookManager/BookManagerProjectStr.jpg)
 
 
