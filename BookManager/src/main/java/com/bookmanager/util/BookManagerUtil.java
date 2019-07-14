@@ -1,15 +1,22 @@
 package com.bookmanager.util;
 
+import java.io.FileNotFoundException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+
+import org.springframework.util.ResourceUtils;
 
 import com.bookmanager.model.Book;
 import com.bookmanager.model.Person;
 import com.opencsv.CSVReader;
 
 public class BookManagerUtil {
+
+	public static String getAbsoluteResourcePath(String fileName) throws FileNotFoundException {
+		return ResourceUtils.getFile("classpath:" + fileName).getAbsolutePath();
+	}
 
 	public static CSVReader getCSVReader(String csvFileNamePath) {
 		return new CSVReader(getReader(csvFileNamePath));

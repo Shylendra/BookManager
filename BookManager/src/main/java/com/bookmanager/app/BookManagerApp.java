@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.util.ResourceUtils;
 
 import com.bookmanager.model.Book;
 import com.bookmanager.model.Person;
@@ -32,10 +33,9 @@ public class BookManagerApp implements CommandLineRunner{
 	@Autowired
 	private BookService bookService;
 
+	private static final String PEOPLE_CSV = "people-input.csv";
 	
-	private static final String PEOPLE_CSV = "./people-input.csv";
-	
-	private static final String BOOKS_CSV = "./books-input.csv";
+	private static final String BOOKS_CSV = "books-input.csv";
 	
 	public static void main(String[] args) {
 		SpringApplication.run(BookManagerApp.class, args);
@@ -47,7 +47,7 @@ public class BookManagerApp implements CommandLineRunner{
 		
 		/* Read People from CSV input */
 		bookManagerCsvService = new BookManagerCsvServiceImpl<Person>();
-		List<Person> people = bookManagerCsvService.read(PEOPLE_CSV, new String[]{"name","phoneNumber","emailAddress"}, Person.class);
+		List<Person> people = bookManagerCsvService.read(BookManagerUtil.getAbsoluteResourcePath(PEOPLE_CSV), new String[]{"name","phoneNumber","emailAddress"}, Person.class);
 		BookManagerUtil.printPeople(people);
 
 		/* Create People */
@@ -56,7 +56,7 @@ public class BookManagerApp implements CommandLineRunner{
 		
 		/* Read Books from CSV input */
 		bookManagerCsvService = new BookManagerCsvServiceImpl<Book>();
-		List<Book> books = bookManagerCsvService.read(BOOKS_CSV, new String[]{"title","author","isbn"}, Book.class);
+		List<Book> books = bookManagerCsvService.read(BookManagerUtil.getAbsoluteResourcePath(BOOKS_CSV), new String[]{"title","author","isbn"}, Book.class);
 		BookManagerUtil.printBooks(books);
 
 		/* Update Books */
