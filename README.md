@@ -13,7 +13,8 @@ These instructions will get you a copy of the project up and running on your loc
 What things you need to install the software and how to install them
 
 ```
-BookManager is a Maven project developed using Java 1.8, Latest JRE on a PC with a Internet Browser and a generated stand-alone application .jar are the Prerequisites to run this application.
+BookManager is a Maven project developed using Java 1.8, Latest JRE on a PC with a Internet Browser 
+and a generated stand-alone application .jar are the Prerequisites to run this application.
 ```
 
 ### Project structure
