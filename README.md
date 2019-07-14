@@ -21,17 +21,29 @@ Spring Boot 2.0.1, Bootstrap 3.3.6, Vue.js 2.0.5, HTML5... etc
 
 A step by step series of examples that tell you how to get a development env running
 
+Clone the project:
+```
 Clone or download the project from <a href="https://github.com/Shylendra/BookManager">here</a>
-
-```
-Build the project using Maven build.
-
-
 ```
 
-## Running the application
+Build the project using Maven:
+```
+Navigate to the Cloned project folder, run the maven command: 'mvn clean install' to generate a stand alone BookManager-0.0.1-SNAPSHOT.jar
+```
+
+## Running the application in stand-alone mode
 
 Steps to run the automated tests for this system
+
+Navigate to the project's target folder and run the stand-alone web application:
+```
+java -jar target/BookManager-0.0.1-SNAPSHOT.jar
+```
+
+Open the Web browser and access the application @ localhost:
+```
+http://localhost:9090
+```
 
 ## Deployment
 
