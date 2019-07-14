@@ -34,7 +34,8 @@ Clone or download the project from https://github.com/Shylendra/BookManager
 
 Build the project using Maven:
 ```
-Navigate to the Cloned project folder, run the maven command: 'mvn clean install' to generate a stand alone BookManager-0.0.1-SNAPSHOT.jar
+Navigate to the Cloned project folder, run the maven command: 
+'mvn clean install' to generate a stand alone BookManager-0.0.1-SNAPSHOT.jar
 ```
 
 ## Running the application in stand-alone mode
