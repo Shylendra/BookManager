@@ -42,6 +42,9 @@ The maven build generates deployable jar/war which can be used to deploy on live
 * [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) - The programming language used
 * [Maven](https://maven.apache.org/) - Dependency Management
 * [JUnit](https://junit.org/junit5/) - Used for unit and automated tests
-* [Cucumber](https://cucumber.io/) - Used to run automated acceptance tests written in a Behavior-Driven Development(BDD) style.
+* [Spring Framework](https://spring.io) - Used to build stand-alone and production ready spring applications
+* [Bootstrap](https://getbootstrap.com/) - Is a front-end framework used to develop responsive web applications faster and easier
+* [Vue.js](https://vuejs.org/) - Used for modular and flexible development environment for Web/UI based applications
+
 
 
