@@ -13,5 +13,35 @@ These instructions will get you a copy of the project up and running on your loc
 What things you need to install the software and how to install them
 
 ```
-Checkmate is a Maven project developed using Java 1.8, Spring Boot 2.0.1, Bootstrap 3.3.6, Vue.js 2.0.5, HTML5... etc
+Checkmate is a Maven project developed using Java 1.8, 
+Spring Boot 2.0.1, Bootstrap 3.3.6, Vue.js 2.0.5, HTML5... etc
 ```
+
+### Installing
+
+A step by step series of examples that tell you how to get a development env running
+
+Clone or download the project from <a href="https://github.com/Shylendra/BookManager">here</a>
+
+```
+Build the project using Maven build.
+
+
+```
+
+## Running the application
+
+Steps to run the automated tests for this system
+
+## Deployment
+
+The maven build generates deployable jar/war which can be used to deploy on live system.
+
+## Built With
+
+* [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) - The programming language used
+* [Maven](https://maven.apache.org/) - Dependency Management
+* [JUnit](https://junit.org/junit5/) - Used for unit and automated tests
+* [Cucumber](https://cucumber.io/) - Used to run automated acceptance tests written in a Behavior-Driven Development(BDD) style.
+
+
