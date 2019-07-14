@@ -47,7 +47,7 @@ Navigate to the project's target folder and run the stand-alone web application:
 java -jar target/BookManager-0.0.1-SNAPSHOT.jar
 ```
 
-Open the Web browser and access the application @ localhost:
+Open the Web browser and access the application @ localhost on port 9090:
 ```
 http://localhost:9090
 ```
