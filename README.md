@@ -13,9 +13,14 @@ These instructions will get you a copy of the project up and running on your loc
 What things you need to install the software and how to install them
 
 ```
-Checkmate is a Maven project developed using Java 1.8, 
-Spring Boot 2.0.1, Bootstrap 3.3.6, Vue.js 2.0.5, HTML5... etc
+BookManager is a Maven project developed using Java 1.8, Latest JRE on a PC with a Internet Browser and a generated stand-alone application .jar are the Prerequisites to run this application.
 ```
+
+### Project structure
+
+Project structure on Eclipse:
+![Book Manager Project structure](BookManager/BookManagerProjectStr.jpg)
+
 
 ### Installing
 
