@@ -27,9 +27,9 @@ Project structure on Eclipse:
 
 A step by step series of examples that tell you how to get a development env running
 
-Clone the project:
+Clone the project from <a href="https://github.com/Shylendra/BookManager">here</a>:
 ```
-Clone or download the project from <a href="https://github.com/Shylendra/BookManager">here</a>
+Clone or download the project from https://github.com/Shylendra/BookManager
 ```
 
 Build the project using Maven:
